@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MEAN Stack</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+</head>
+<body ng-app="contactApp">
+    
+    <div class="container" ng-controller="contactController">
+
+        <h1>Contact List App</h1>
+
+        <div class="alert alert-success" role="alert" ng-show="success">
+            {{ successMessage }}
+        </div>
+
+        <table class="table" ng-init="getContacts()">
+            <thead>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Number</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control in_name" ng-model="contact.name" placeholder="Enter Name">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control in_email" ng-model="contact.email" placeholder="Enter Email">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control in_number" ng-model="contact.number" placeholder="Enter Number">
+                    </td>
+                    <td>
+                        <input type="hidden" ng-model="contact.id">
+                        <input type="hidden" ng-model="process_value">
+                        <button class="btn btn-success" ng-click="insertContact()" ng-disabled="insert_button">Add</button>
+                        <button class="btn btn-info" ng-click="updateContact()" ng-disabled="update_button">Update</button>
+                        <button class="btn btn-warning" ng-click="cancelButton()" ng-disabled="cancel_button">Cancel</button>
+                    </td>
+                </tr>
+                <tr ng-repeat="contact in contact_list">
+                    <td>{{ contact.name }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.number }}</td>
+                    <td>
+                        <button class="btn btn-info" ng-click="editContact(contact)">Edit</button>
+                        <button class="btn btn-danger" ng-click="deleteContact(contact.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <script src="https://code.angularjs.org/1.6.9/angular.min.js"></script>
+    <script src="assets/js/index.js"></script>
+
+</body>
+</html>

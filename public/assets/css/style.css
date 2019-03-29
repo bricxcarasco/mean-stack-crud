@@ -1,0 +1,12 @@
+h1 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.redInputBorder {
+    border-color: red;
+}
+
+.defaultInputBorder {
+    border-color: #ced4da;
+}
